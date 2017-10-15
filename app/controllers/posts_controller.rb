@@ -18,4 +18,14 @@ class PostsController < ApplicationController
 	  @post.save
 	  redirect_to post_path(@post)
 	end
+
+	def edit # the page that renders the edit
+		@post = Post.find(params[:id])
+	end
+
+	def update # talks to the model to update the DB
+		@post = Post.find(params[:id])
+		@post.update(title: params[:title], description: params[:description])
+		redirect_to post_path(@post)
+	end
 end
